@@ -1,0 +1,13 @@
+outputs/
+__pycache__/
+*.pyc
+*.pt
+*.ckpt
+*.npz
+*.h5
+*.hdf5
+*.mp4
+.ipynb_checkpoints/
+wandb/
+.claude/settings.local.json
+*.npy

@@ -1,0 +1,19 @@
+seed: 0
+smoke: false
+offline_dir: outputs/experiment1/offline
+ckpt_root: outputs/experiment1/ckpt
+batch_size: 256
+num_workers: 4
+max_batches: null
+
+data:
+  split_path: outputs/experiment1/cache/split.json
+  h_cache_dir: outputs/experiment1/cache
+  fake_h: false
+  max_demos_per_task: null
+
+smoke_overrides:
+  data.max_demos_per_task: 1
+  batch_size: 32
+  max_batches: 3
+  num_workers: 0

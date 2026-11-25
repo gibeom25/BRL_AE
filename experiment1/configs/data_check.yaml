@@ -1,0 +1,14 @@
+out_dir: outputs/experiment1/data_check
+cache_dir: outputs/experiment1/cache
+data_dir: /home/it-1-622/data/LIBERO/datasets/libero_spatial
+seed: 0
+smoke: false
+n_val: 5
+range_max_demos: 50
+align_tasks: [0, 5]
+align_steps: [0, 20, 60]
+
+smoke_overrides:
+  range_max_demos: 2
+  align_tasks: [0]
+  align_steps: [0]

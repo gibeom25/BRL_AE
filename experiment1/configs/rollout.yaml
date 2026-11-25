@@ -1,0 +1,23 @@
+seed: 0
+smoke: false
+suite: libero_spatial
+rollout_dir: outputs/experiment1/rollouts
+ckpt_root: outputs/experiment1/ckpt
+cache_dir: outputs/experiment1/cache
+split_path: outputs/experiment1/cache/split.json
+episodes_per_task: 10
+image_size: 128
+max_steps: 220      # LIBERO-Spatial convention (OpenVLA eval)
+n_wait: 10          # dummy steps at start for objects to settle
+n_exec: 8           # execute 8 of H=10 per plan
+smoke_task_ids: [0]
+
+vlm:  # used only if the checkpoint has no extractor config
+  model_name: HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+  h_layer: -1
+  img_pool: [3, 4]
+  n_txt_pool: 4
+
+smoke_overrides:
+  episodes_per_task: 1
+  max_steps: 40

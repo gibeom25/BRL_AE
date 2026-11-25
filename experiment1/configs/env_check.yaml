@@ -1,0 +1,24 @@
+out_dir: outputs/experiment1/env_check
+seed: 0
+smoke: false
+
+torch:
+  matmul_n: 4096
+
+env:
+  suite: libero_spatial
+  task_index: 0            # 0..9, 기준 LIBERO-Spatial 태스크 (bddl 파일명 정렬 순)
+  image_size: 128          # LIBERO 원본 데이터와 동일
+  random_steps: 10
+  # LIBERO-plus 변형 task 이름 suffix (task_classification.json에서 선택)
+  camera_suffix: auto      # auto = 해당 태스크의 Camera Viewpoints 중 difficulty 3 첫 번째
+  light_suffix: auto       # auto = Light Conditions 첫 번째
+  noise_suffix: auto       # auto = Sensor Noise 첫 번째
+
+vlm:
+  model_name: HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+  dtype: bfloat16
+
+smoke_overrides:
+  torch.matmul_n: 512
+  env.random_steps: 3

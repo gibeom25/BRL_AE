@@ -1,0 +1,57 @@
+# Shared AE training config (experiment1_plan.md §2). Per-model files set model_id and override.
+seed: 0
+smoke: false
+ckpt_root: outputs/experiment1/ckpt
+
+data:
+  split_path: outputs/experiment1/cache/split.json
+  stats_path: outputs/experiment1/cache/norm_stats.json
+  h_cache_dir: outputs/experiment1/cache
+  fake_h: false              # true = random h_tokens (smoke before caching)
+  max_demos_per_task: null
+  obs_action_shift: 0        # 0 = LIBERO default pairing (see logs/20261125.md)
+
+model:
+  H: 10
+  action_dim: 7
+  d: 384
+  n_layers: 6
+  moe_n_layers: 3
+  n_heads: 6
+  d_vlm: 960
+  n_h: 16
+  proprio_dim: 8
+  dropout: 0.0
+  router_hidden: 256
+  pretrained_wrist: true
+  n_euler: 10
+
+aug:
+  crop: 0.9
+  jitter: 0.1
+
+train:
+  batch_size: 256
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  warmup: 1000
+  steps: 30000
+  grad_clip: 1.0
+  num_workers: 8
+  log_every: 100
+  val_every: 2000
+  val_max_batches: 8
+  ckpt_every: 10000
+  g_log_every: 500
+
+smoke_overrides:
+  data.max_demos_per_task: 2
+  train.steps: 50
+  train.warmup: 10
+  train.batch_size: 32
+  train.num_workers: 2
+  train.log_every: 10
+  train.val_every: 25
+  train.val_max_batches: 2
+  train.ckpt_every: 50
+  train.g_log_every: 10

@@ -1,0 +1,14 @@
+cache_dir: outputs/experiment1/cache
+split_path: outputs/experiment1/cache/split.json
+seed: 0
+smoke: false
+batch_size: 64
+smoke_batches: 30
+num_workers: 12
+
+vlm:
+  model_name: HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+  h_layer: -1          # last hidden state
+  img_pool: [3, 4]     # 8x8 image-token grid -> 12 tokens
+  n_txt_pool: 4
+  dtype: bfloat16
